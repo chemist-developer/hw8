@@ -9,15 +9,26 @@
 <body>
     <script>
         function isPalindrome(num){
+            try{
             let reverseNum = num.toString().split('').reverse().join('');
-            if (num === reverseNum){
+            if (num === +reverseNum){
                 return true;
             }else{
-                num = isPalindrome(num + reverseNum);
+                num = isPalindrome(+num + reverseNum);
             }
             return num;
+
+            }
+            catch(error){
+                if(error.name==='RangeError'){
+                    return false;
+                }else{
+                    throw error;
+                }
+            }
+            
         }
-        console.log(isPalindrome(47));
+        console.log(isPalindrome(196));
         
     </script>
 </body>
